@@ -1,36 +1,20 @@
-import '@mdxeditor/editor/style.css'
 import './CreatePost.css'
-import { MDXEditor, UndoRedo, BoldItalicUnderlineToggles, toolbarPlugin, headingsPlugin, listsPlugin, quotePlugin, thematicBreakPlugin, Button } from '@mdxeditor/editor'
+import Markdown from 'react-markdown';
 import {useState} from 'react'
+import NavBar from '../NavBar/NavBar';
 
 const CreatePost: React.FC = () => {
-    const [text, setText] = useState("Hello World");
-
+    const [value, setValue] = useState("# Mark Down World");
 
     return (
-        <MDXEditor
-          className='editor'
-          markdown={text}
-          onChange={setText}
-          plugins={[
-            headingsPlugin(),
-            quotePlugin(),
-            listsPlugin(),
-            thematicBreakPlugin(),
-            toolbarPlugin({
-              toolbarContents: () => (
-                <>
-                  {' '}
-                  <UndoRedo />
-                  <BoldItalicUnderlineToggles />
-                  <Button />
-                </>
-              )
-            })
-          ]}
-        />
-
+      <div className="editor">
+        <textarea
+          onChange={e => setValue(e.target.value)}
+        >{value}</textarea>
+        <Markdown>{value}</Markdown>
+      </div>
     );
+
 };
 
 export default CreatePost;

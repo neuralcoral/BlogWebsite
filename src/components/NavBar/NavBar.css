@@ -1,6 +1,7 @@
 .side-nav {
     height: 100vh;
-    width: 250px;
+    width: 15vw;
+    text-align: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -25,7 +26,11 @@
     color: #264653;
   }
   
-  .side-nav ul li a:hover {
+  .side-nav a:hover {
     background-color: #4CAFAB;
+  }
+
+  .side-nav a:focus {
+    background-color: #5CBFAC;
   }
   
