@@ -4,8 +4,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #FF6F61;
     padding-top: 20px;
+    color: #264653;
   }
   
   .side-nav ul {
@@ -18,13 +19,13 @@
     text-align: left;
   }
   
-  .side-nav ul li a {
-    color: white;
+  .side-nav a {
     text-decoration: none;
     display: block;
+    color: #264653;
   }
   
   .side-nav ul li a:hover {
-    background-color: #575757;
+    background-color: #4CAFAB;
   }
   
