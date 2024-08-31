@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import CreatePost from './components/CreatePost/CreatePost';
 import NavBar from "./components/NavBar/NavBar"
+import DraftPost from './components/DraftPost/DraftPost';
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
                 element={<Login />}
               />
               <Route
-                path="/createPost"
-                element={<CreatePost />}
+                path="/posts/draft"
+                element={<DraftPost />}
               />
             </Routes>
           </BrowserRouter>
