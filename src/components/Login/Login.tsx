@@ -19,7 +19,7 @@ const Login = () => {
     
 
     return (
-        <div className="login">
+        <div > 
             <Link to="/" className="home-link">
                 Home
             </Link>
