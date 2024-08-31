@@ -1,6 +1,5 @@
 import './DraftPost.css'
 import {useState} from 'react'
-import NavBar from '../NavBar/NavBar';
 import PostEditor from '../PostEditor/PostEditor';
 import PostPreview from '../PostPreview/PostPreview';
 

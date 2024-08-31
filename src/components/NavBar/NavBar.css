@@ -1,36 +1,69 @@
 .side-nav {
-    height: 100vh;
-    width: 15vw;
     text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #FF6F61;
-    padding-top: 20px;
-    color: #264653;
-  }
-  
-  .side-nav ul {
-    list-style-type: none;
+    height: 100vh;
     padding: 0;
-  }
-  
-  .side-nav ul li {
-    padding: 8px 16px;
-    text-align: left;
-  }
-  
-  .side-nav a {
-    text-decoration: none;
-    display: block;
-    color: #264653;
-  }
-  
-  .side-nav a:hover {
-    background-color: #4CAFAB;
-  }
+    margin-right: 10px;
+    position: relative;
+    /* transition: transform 0.3s ease;
+    will-change: transform; */
+}
+.side-nav.visible {
+  background-color: #FF6F61;
+  color: #264653;
+}
 
-  .side-nav a:focus {
-    background-color: #5CBFAC;
-  }
   
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0 0;
+  width: 100%;
+}
+  
+li {
+  font-size: 36px;
+  padding: 20px 0px;
+  text-align: left;
+  padding: 10px 20px;
+  user-select: none;
+  width: 100%;
+}
+  
+li.option:hover {
+  background-color: #4CAFAB;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+li.option:active {
+  background-color: #5D9F9B;
+  transition: background-color 0.2s;
+  outline:none;
+}
+
+.toggle-show {
+  text-align: left;
+  padding-left: 50px;
+  position: absolute;
+  width: ;
+  bottom: 10px;
+  font-size: 5em;
+  text-shadow: 0 0 1px #264653, 
+               0 0 1px #264653, 
+               0 0 1px #264653, 
+               0 0 1px #264653; 
+}
+
+.toggle-show:hover {
+  font-size: 6em;
+  outline: none; /* Remove default focus outline */
+  text-shadow: 0 0 2px #264653, 
+               0 0 2px #264653, 
+               0 0 2px #264653, 
+               0 0 2px #264653; 
+}
+  
+.toggle-show:active {
+  font-size: 5em;
+}

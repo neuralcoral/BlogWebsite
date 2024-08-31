@@ -1,13 +1,32 @@
-import React from 'react';
+import {useState} from 'react';
 import './NavBar.css';
+import { useNavigate } from 'react-router-dom';
 
 const NavBar: React.FC = () => {
+    const navigate = useNavigate();
+    const [show, setShow] = useState(true);
+
+    function toggleShow() {
+        setShow(!show);
+    }
+
+    function options() {
+        return (
+            <>
+                <li className='option' onClick={() => navigate('/')}>Home</li>
+                <li className='option' onClick={() => navigate('about')}>About</li>
+                <li className='option' onClick={() => navigate('login')}>Login</li>
+                <li className='option' onClick={() => navigate('posts/draft')}>Create Post</li>
+            </>
+        );
+    }
+
     return (
-        <div className="side-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="login">Login</a></li>
-            <li><a href="createPost">Create Post</a></li>
+        <div className={`side-nav ${show ? 'visible' : ''}`}>
+            <ul>
+                {show && options()}
+                <li className='toggle-show' onClick={toggleShow}>🧠</li>
+            </ul>
         </div>
     );
 }

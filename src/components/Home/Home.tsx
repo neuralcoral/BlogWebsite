@@ -1,8 +1,8 @@
-import Content from "../Content/Content"
+import Feed from "../Feed/Feed"
 
 const Home: React.FC = () => {
     return <>
-        <Content />
+        <Feed />
     </>
 }
 export default Home;

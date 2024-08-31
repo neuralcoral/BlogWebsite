@@ -1,7 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* grid-template-columns: max-content 1fr; */
     height: 100vh;
-    margin-left: 15vw; /* This margin shifts it to the right of the side-nav */
+    /* margin-left: 15vw; This margin shifts it to the right of the side-nav */
+}
+
+.navbar {
+  width: 10vw;
+  height: 100vh;
+  align-self: flex-start;
+  min-width: fit-content;
+  max-width: 200px;
+  padding: 0;
+  margin: 0;
+
 }
