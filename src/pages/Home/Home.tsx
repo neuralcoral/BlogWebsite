@@ -1,4 +1,4 @@
-import Feed from "../Feed/Feed"
+import Feed from "./Feed"
 
 const Home: React.FC = () => {
     return <>

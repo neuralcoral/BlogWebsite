@@ -6,9 +6,7 @@ export interface PostPreviewProps {
 
 const PostPreview: React.FC<PostPreviewProps> = ({ text }) => {
     return (
-        <div className="preview">
-            <Markdown>{text}</Markdown>
-        </div>
+        <Markdown>{text}</Markdown>
     )
 }
 
