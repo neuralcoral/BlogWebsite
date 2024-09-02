@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const NavBar: React.FC = () => {
     const navigate = useNavigate();
@@ -14,9 +15,12 @@ const NavBar: React.FC = () => {
         return (
             <>
                 <li className='option' onClick={() => navigate('/')}>Home</li>
-                <li className='option' onClick={() => navigate('about')}>About</li>
-                <li className='option' onClick={() => navigate('login')}>Login</li>
-                <li className='option' onClick={() => navigate('posts/draft')}>Create Post</li>
+                <li className='option' onClick={() => navigate('/about')}>About</li>
+                <li className='option' onClick={() => navigate('/login')}>Login</li>
+                <li className='option' onClick={() => {
+                    const newId = uuidv4();
+                    navigate(`/posts/${newId}/draft`)
+                }}>Create Post</li>
             </>
         );
     }

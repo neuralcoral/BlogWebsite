@@ -4,10 +4,12 @@ import PostEditor from './PostEditor';
 import PostPreview from './PostPreview';
 import { FaEdit } from "react-icons/fa";
 import { VscOpenPreview } from "react-icons/vsc";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { initializePost } from '../../utils/postUtils';
 
 const DraftPost: React.FC = () => {
     const navigate = useNavigate();
+    const { id } = useParams<{ id: string }>(); // Extract the id from the URL
     const [value, setValue] = useState("# Mark Down World");
     const [isEditor, setIsEditor] = useState(true);
 
@@ -28,7 +30,7 @@ const DraftPost: React.FC = () => {
                 <button>
                     Save
                 </button>
-                <button onClick={() => navigate('/posts/review/1')}>
+                <button onClick={() => navigate(`/posts/${id}/review`)}>
                     Review
                 </button>
             </div>

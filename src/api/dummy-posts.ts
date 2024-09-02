@@ -1,8 +1,9 @@
+import { v4 as uuid } from 'uuid';
 import Post, { Status } from '../models/post';
 
 const dummyPosts: Post[] = [
   {
-    id: 1,
+    id: uuid(),
     title: "Understanding TypeScript",
     body: "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.",
     status: Status.Posted,
@@ -10,7 +11,7 @@ const dummyPosts: Post[] = [
     updatedAt: new Date('2024-08-02T12:00:00Z')
   },
   {
-    id: 2,
+    id: uuid(),
     title: "Getting Started with React",
     body: "React is a JavaScript library for building user interfaces.",
     status: Status.Draft,
@@ -18,7 +19,7 @@ const dummyPosts: Post[] = [
     updatedAt: null
   },
   {
-    id: 3,
+    id: uuid(),
     title: "Exploring Node.js",
     body: "Node.js is a runtime environment that allows JavaScript to run on the server.",
     status: Status.Posted,
@@ -26,7 +27,7 @@ const dummyPosts: Post[] = [
     updatedAt: new Date('2024-08-06T16:45:00Z')
   },
   {
-    id: 4,
+    id: uuid(),
     title: "Introduction to Docker",
     body: "Docker is a platform designed to help developers build, share, and run applications in containers.",
     status: Status.Draft,
@@ -34,7 +35,7 @@ const dummyPosts: Post[] = [
     updatedAt: null
   },
   {
-    id: 5,
+    id: uuid(),
     title: "CI/CD with GitHub Actions",
     body: "GitHub Actions is a tool to automate your software development workflows.",
     status: Status.Posted,
@@ -42,7 +43,7 @@ const dummyPosts: Post[] = [
     updatedAt: new Date('2024-08-11T13:00:00Z')
   },
   {
-    id: 6,
+    id: uuid(),
     title: "REST API Design Best Practices",
     body: "REST APIs are a crucial part of modern web development, providing a way to interact with web services.",
     status: Status.Draft,
@@ -50,7 +51,7 @@ const dummyPosts: Post[] = [
     updatedAt: null
   },
   {
-    id: 7,
+    id: uuid(),
     title: "Advanced JavaScript Concepts",
     body: "JavaScript offers many advanced features like closures, promises, and async/await.",
     status: Status.Posted,
@@ -58,7 +59,7 @@ const dummyPosts: Post[] = [
     updatedAt: new Date('2024-08-15T10:25:00Z')
   },
   {
-    id: 8,
+    id: uuid(),
     title: "Introduction to Kubernetes",
     body: "Kubernetes is an open-source system for automating the deployment, scaling, and management of containerized applications.",
     status: Status.Draft,
@@ -66,7 +67,7 @@ const dummyPosts: Post[] = [
     updatedAt: null
   },
   {
-    id: 9,
+    id: uuid(),
     title: "Understanding GraphQL",
     body: "GraphQL is a query language for APIs and a runtime for executing those queries by using a type system you define for your data.",
     status: Status.Posted,
@@ -74,7 +75,7 @@ const dummyPosts: Post[] = [
     updatedAt: new Date('2024-08-19T14:00:00Z')
   },
   {
-    id: 10,
+    id: uuid(),
     title: "Building Mobile Apps with React Native",
     body: "React Native allows you to build mobile apps using JavaScript and React.",
     status: Status.Draft,

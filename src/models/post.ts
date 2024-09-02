@@ -5,7 +5,7 @@ export enum Status {
 };
 
 export default interface Post {
-  id: number;
+  id: string;
   title: string;
   body: string;
   status: Status
