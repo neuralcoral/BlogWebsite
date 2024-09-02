@@ -4,7 +4,7 @@ import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import DraftPost from '../../pages/DraftPost/DraftPost';
 import ReviewPost from '../../pages/ReviewPost/ReviewPost';
-import {v4 as uuidv4} from 'uuid';
+import EditPosts from '../../pages/EditPosts/EditPosts';
 
 const Content: React.FC = () => {
     return (
@@ -24,6 +24,10 @@ const Content: React.FC = () => {
               <Route
                 path="/posts/:id/review"
                 element={<ReviewPost />}
+              />
+              <Route
+                path="/posts/edit"
+                element={<EditPosts />}
               />
             </Routes>
     );

@@ -1,4 +1,4 @@
-import './styles/DraftPost.css'
+import './DraftPost.css'
 import {useState} from 'react'
 import PostEditor from './PostEditor';
 import PostPreview from './PostPreview';

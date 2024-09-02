@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
-import Post from '../../models/post';
-import { getPostedPosts } from "../../api/posts";
+import { getDraftedPosts } from "../../api/posts";
+import Post from "../../models/post";
 
-const BlogEntry: React.FC = () => {
+const EditPosts: React.FC = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    
     useEffect(() => {
         const abortController = new AbortController();
         const signal = abortController.signal;
         const fetchPosts = async() => {
             try {
-                const postedPosts = await getPostedPosts({ signal });
-                setPosts(postedPosts);
-                console.log(postedPosts);
+                const draftedPosts = await getDraftedPosts({ signal });
+                setPosts(draftedPosts);
+                console.log(draftedPosts);
             } catch (error) {
                 console.error('Failed to fetch posts: ', error);
             }
         };
         fetchPosts();
-        return  () => {
+        return () => {
             abortController.abort();
         }
-    }, []);
 
+    }, []);
     return (
         <>
             {
@@ -39,4 +38,4 @@ const BlogEntry: React.FC = () => {
     );
 };
 
-export default BlogEntry;
+export default EditPosts;
