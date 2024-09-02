@@ -1,6 +1,6 @@
 import './App.css';
 import Content from './components/Content/Content';
-import NavBar from "./components/NavBar/NavBar"
+import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
       </header>
       <BrowserRouter>
-        <div className='container'>
+        <div className='app'>
           <div className='navbar'>
             <NavBar /> 
           </div>
@@ -17,7 +17,7 @@ function App() {
             <Content />
           </div>
         </div>
-          </BrowserRouter>
+      </BrowserRouter>
     </>
   );
 }
