@@ -14,3 +14,11 @@ export const initializePost = (id: string | undefined): Post => {
     updatedAt: null
   };
 }
+
+export const buildReviewPostUrl = (id: string): string => {
+  return `/posts/${id}/review`;
+};
+
+export const buildDraftPostUrl = (id: string): string => {
+  return `/posts/${id}/draft`;
+};

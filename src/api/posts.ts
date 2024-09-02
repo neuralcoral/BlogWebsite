@@ -1,6 +1,5 @@
 import Post, { Status } from '../models/post';
 import dummyPosts from './dummy-posts';
-import { v4 as uuid } from 'uuid';
 
 export const getPostedPosts = async ({ signal }: { signal?: AbortSignal }): Promise<Post[]> => {
   return new Promise((resolve, reject) => {
@@ -23,23 +22,21 @@ export const getDraftedPosts = () => {
 export const getPost = (id: string) => {
   const posts = dummyPosts.filter((post) => id === post.id);
   if (posts.length !== 1) {
-    throw new Error(`Post with id ${id} not found`);
+    throw new Error(`Post with ID ${id} not found`);
   }
   return posts[0];
 }
 
-export const createDraft = (title: string, body: string) => {
-  const newId = dummyPosts[dummyPosts.length - 1].id + 1;
-  dummyPosts.push({
-    id: newId,
-    title: title,
-    body: body,
-    status: Status.Draft,
-    createdAt: new Date(Date.now().toLocaleString()),
-    updatedAt: null
-  });
+export const createDraft = (post: Post) => {
+  dummyPosts.push(post);
+  
 }
 
-export const createPost = (post: Post) => {
-  dummyPosts.push(post);
+export const submitPost = (post: Post) => {
+  const newPost = {
+    ...post,
+    status: Status.Posted,
+    updateAt: new Date(Date.now().toLocaleString())
+  }
+  dummyPosts.push(newPost);
 }

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { buildDraftPostUrl } from '../../utils/postUtils';
 
 const NavBar: React.FC = () => {
     const navigate = useNavigate();
@@ -12,15 +13,16 @@ const NavBar: React.FC = () => {
     }
 
     function options() {
+        const HOME = '/';
+        const ABOUT = '/about';
+        const LOGIN = '/login';
+        const CREATE_POST = buildDraftPostUrl(uuidv4());
         return (
             <>
-                <li className='option' onClick={() => navigate('/')}>Home</li>
-                <li className='option' onClick={() => navigate('/about')}>About</li>
-                <li className='option' onClick={() => navigate('/login')}>Login</li>
-                <li className='option' onClick={() => {
-                    const newId = uuidv4();
-                    navigate(`/posts/${newId}/draft`)
-                }}>Create Post</li>
+                <li className='option' onClick={() => navigate(HOME)}>Home</li>
+                <li className='option' onClick={() => navigate(ABOUT)}>About</li>
+                <li className='option' onClick={() => navigate(LOGIN)}>Login</li>
+                <li className='option' onClick={() => navigate(CREATE_POST)}>Create Post</li>
             </>
         );
     }

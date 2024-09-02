@@ -1,11 +1,18 @@
+import Post from "../../models/post";
+
 export interface PostEditorProps {
-    text: string;
-    setText: (value: string) => void;
+    post: Post;
+    setPost: (value: Post) => void;
 }
 
-const PostEditor: React.FC<PostEditorProps> = ({text, setText}) => {
+const PostEditor: React.FC<PostEditorProps> = ({post, setPost}) => {
     return (
-        <textarea onChange={e => setText(e.target.value)}>{text}</textarea>
+        <textarea onChange={e => {
+            const changedPost = {
+                ...post,
+                body: e.target.value
+            };
+            setPost(changedPost)}}>{post.body}</textarea>
     );
 };
 

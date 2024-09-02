@@ -1,12 +1,15 @@
 import Markdown from 'react-markdown';
+import Post from '../../models/post';
 
 export interface PostPreviewProps {
-    text: string;
+    post: Post;
 }
 
-const PostPreview: React.FC<PostPreviewProps> = ({ text }) => {
+const PostPreview: React.FC<PostPreviewProps> = ({ post }: PostPreviewProps) => {
     return (
-        <Markdown>{text}</Markdown>
+        <>
+            <Markdown>{post.body}</Markdown>
+        </>
     )
 }
 
