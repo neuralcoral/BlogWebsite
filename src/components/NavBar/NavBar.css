@@ -1,30 +1,68 @@
 .side-nav {
+    text-align: center;
     height: 100vh;
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    padding-top: 20px;
-  }
-  
-  .side-nav ul {
-    list-style-type: none;
     padding: 0;
-  }
+    margin-right: 10px;
+    position: relative;
+    /* transition: transform 0.3s ease;
+    will-change: transform; */
+}
+.side-nav.visible {
+  background-color: #FF6F61;
+  color: #264653;
+}
+
   
-  .side-nav ul li {
-    padding: 8px 16px;
-    text-align: left;
-  }
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0 0;
+  width: 100%;
+}
   
-  .side-nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-  }
+li {
+  font-size: 36px;
+  padding: 20px 0px;
+  text-align: left;
+  padding: 10px 20px;
+  user-select: none;
+  width: 100%;
+}
   
-  .side-nav ul li a:hover {
-    background-color: #575757;
-  }
+li.option:hover {
+  background-color: #4CAFAB;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+li.option:active {
+  background-color: #5D9F9B;
+  transition: background-color 0.2s;
+  outline:none;
+}
+
+.toggle-show {
+  text-align: left;
+  padding-left: 50px;
+  position: absolute;
+  bottom: 10px;
+  font-size: 75px;
+  text-shadow: 0 0 1px #264653, 
+               0 0 1px #264653, 
+               0 0 1px #264653, 
+               0 0 1px #264653; 
+}
+
+.toggle-show:hover {
+  font-size: 80px;
+  outline: none; /* Remove default focus outline */
+  text-shadow: 0 0 2px #264653, 
+               0 0 2px #264653, 
+               0 0 2px #264653, 
+               0 0 2px #264653; 
+}
   
+.toggle-show:active {
+  font-size: 75px;
+}
