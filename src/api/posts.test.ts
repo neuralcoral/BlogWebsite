@@ -21,7 +21,6 @@ describe('Posts client Tests', () => {
     expect(await getPosts({})).toEqual(dummyPosts);
   });
 
-  test('get')
 })
 
 
