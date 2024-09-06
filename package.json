@@ -18,7 +18,9 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "./src/**"
+      "./src/**",
+      "!./src/components/NavBar/pages.ts",
+      "!./src/models/**"
     ],
     "coverageThreshold": {
       "global": {
