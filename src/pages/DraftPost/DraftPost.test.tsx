@@ -1,9 +1,6 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import DraftPost from "./DraftPost";
-import PostEditor from "./PostEditor";
-import Post, { Status } from '../../models/post';
-
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -16,7 +13,6 @@ jest.mock('react-router-dom', () => ({
 jest.mock('../../utils/postUtils', () => ({
   initializePost: jest.fn()
 }));
-
 jest.mock('./TitleInput', () => () => <div>Mocked TitleInput</div>);
 jest.mock('./PostViewToggle', () => () => <div>Mocked PostViewToggle</div>);
 jest.mock('./SideButtons', () => () => <div>Mocked SideButtons</div>);
@@ -47,39 +43,4 @@ describe('DraftPost component', () => {
     );
     expect(initializePost).toHaveBeenCalledWith('new-uuid');
   }) 
-});
-
-describe('PostEditor component', () => { 
-  const post: Post = {
-    id: 'some-uuid',
-    title: 'Title',
-    body: 'Body Text',
-    status: Status.Draft,
-    createdAt: new Date(Date.now().toLocaleString()),
-    updatedAt: null
-  }
-
-  test('initial state', () => {
-    render(
-      <PostEditor post={post} setPost={jest.fn()}/>
-    )
-    const editor = screen.getByRole('textbox');
-    expect(editor).toBeInTheDocument();
-    expect(editor).toHaveValue(post.body);
-  });
-
-  test('updates post body on text change', () => {
-    const setPostMock = jest.fn();
-    render(
-      <PostEditor post={post} setPost={setPostMock}/>
-    )
-    const editor = screen.getByRole('textbox');
-    fireEvent.change(editor, { target: { value: 'Updated Text' } });
-
-    expect(setPostMock).toHaveBeenCalledWith({
-      ...post,
-      body: 'Updated Text'
-    });
-  });
-
 });

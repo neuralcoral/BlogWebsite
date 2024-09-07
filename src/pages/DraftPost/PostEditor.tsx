@@ -6,7 +6,7 @@ export interface PostEditorProps {
 }
 
 const PostEditor: React.FC<PostEditorProps> = ({post, setPost}) => {
-    const handleChange = (e) => {
+    const handleChange: React.ChangeEventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const changedPost = {
             ...post,
             body: e.target.value
