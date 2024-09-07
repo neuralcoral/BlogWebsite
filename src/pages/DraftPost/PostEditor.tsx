@@ -6,13 +6,18 @@ export interface PostEditorProps {
 }
 
 const PostEditor: React.FC<PostEditorProps> = ({post, setPost}) => {
+    const handleChange = (e) => {
+        const changedPost = {
+            ...post,
+            body: e.target.value
+        };
+        setPost(changedPost);
+    }
     return (
-        <textarea onChange={e => {
-            const changedPost = {
-                ...post,
-                body: e.target.value
-            };
-            setPost(changedPost)}}>{post.body}</textarea>
+        <textarea 
+            value={post.body} 
+            onChange={handleChange}
+        />
     );
 };
 
