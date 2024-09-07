@@ -1,36 +1,28 @@
 import PostEditor from "./PostEditor";
 import { fireEvent, render, screen } from '@testing-library/react';
-import Post, { Status } from '../../models/post';
+import { initialPost } from "../../test_utils/mock_data";
 
 describe('PostEditor  component', () => { 
-  const post: Post = {
-    id: 'some-uuid',
-    title: 'Title',
-    body: 'Body Text',
-    status: Status.Draft,
-    createdAt: new Date(Date.now().toLocaleString()),
-    updatedAt: null
-  }
 
   test('initial state', () => {
     render(
-      <PostEditor post={post} setPost={jest.fn()}/>
+      <PostEditor post={initialPost} setPost={jest.fn()}/>
     )
     const editor = screen.getByRole('textbox');
     expect(editor).toBeInTheDocument();
-    expect(editor).toHaveValue(post.body);
+    expect(editor).toHaveValue(initialPost.body);
   });
 
   test('updates post body on text change', () => {
     const setPostMock = jest.fn();
     render(
-      <PostEditor post={post} setPost={setPostMock}/>
+      <PostEditor post={initialPost} setPost={setPostMock}/>
     )
     const editor = screen.getByRole('textbox');
     fireEvent.change(editor, { target: { value: 'Updated Text' } });
 
     expect(setPostMock).toHaveBeenCalledWith({
-      ...post,
+      ...initialPost,
       body: 'Updated Text'
     });
   });

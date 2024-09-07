@@ -18,15 +18,20 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "./src/**",
-      "!./src/components/NavBar/pages.ts",
-      "!./src/models/**",
-      "!./src/api/dummy-posts.ts"
+      "<rootDir>/src/**/*.{ts,tsx,js,jsx}",
+      "!<rootDir>/src/components/NavBar/pages.ts",
+      "!<rootDir>/src/models/**",
+      "!<rootDir>/src/api/dummy-posts.ts",
+      "!<rootDir>/src/test_utils/**",
+      "!<rootDir>/src/__mocks__/**"
     ],
     "coverageThreshold": {
       "global": {
         "lines": 90
       }
+    },
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
     },
     "coverageReporters": ["text"]
   },
