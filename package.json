@@ -20,7 +20,8 @@
     "collectCoverageFrom": [
       "./src/**",
       "!./src/components/NavBar/pages.ts",
-      "!./src/models/**"
+      "!./src/models/**",
+      "!./src/api/dummy-posts.ts"
     ],
     "coverageThreshold": {
       "global": {

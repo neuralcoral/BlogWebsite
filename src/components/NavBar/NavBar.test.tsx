@@ -1,15 +1,37 @@
 import React from "react";
 import { fireEvent, render, screen } from '@testing-library/react';
 import NavBar from "./NavBar";
-import { BrowserRouter, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { PAGES } from "./pages";
+import { v4 as uuidv4 } from 'uuid';
+
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
+}));
+
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => '12345-fixed-uuid'),  // Return a fixed UUID for all tests
+}));
+
 
 describe('NavBar component', () => {
+  const mockNavigate = jest.fn();
+
+  beforeEach(() => {
+    require('react-router-dom').useNavigate.mockReturnValue(mockNavigate);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
+
   test('renders Navbar children components', () => {
     render(
-      <BrowserRouter>
+      <Router>
         <NavBar />
-      </BrowserRouter>
+      </Router>
     );
 
     PAGES.map((page) => {
@@ -43,11 +65,6 @@ describe('NavBar component', () => {
   });
 
   test('clicking on a page navigates correctly', () => {
-    const mockNavigate = jest.fn();
-
-    jest.mock('react-router-dom', () => ({
-      useNavigate: () => mockNavigate,
-    }));
 
     render(
       <Router>
