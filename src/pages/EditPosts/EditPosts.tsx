@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDraftedPosts } from "../../api/posts";
 import Post from "../../models/post";
+import EditPost from './EditPost';
 
 const EditPosts: React.FC = () => {
     const [posts, setPosts] = useState<Post[]>([]);
@@ -27,10 +28,7 @@ const EditPosts: React.FC = () => {
             {
                 posts.map((post) => {
                     return (
-                        <div key={post.id} className="post-preview">
-                            <h2>{post.title}</h2>
-                            <p>{post.body.substring(0, 100)}...</p>
-                        </div>
+                        <EditPost post={post}/>
                     );
                 })
             }
