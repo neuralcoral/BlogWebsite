@@ -4,7 +4,7 @@ import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import DraftPost from '../../pages/DraftPost/DraftPost';
 import ReviewPost from '../../pages/ReviewPost/ReviewPost';
-import EditPosts from '../../pages/EditPosts/EditPosts';
+import EditPostPreviews from '../../pages/EditPosts/EditPostPreviews';
 
 const Content: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const Content: React.FC = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/posts/:id/draft" element={<DraftPost />} />
       <Route path="/posts/:id/review" element={<ReviewPost />} />
-      <Route path="/posts/edit" element={<EditPosts />} />
+      <Route path="/posts/edit" element={<EditPostPreviews />} />
     </Routes>
   );
 };

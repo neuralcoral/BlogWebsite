@@ -17,9 +17,19 @@ const DraftPost: React.FC = () => {
   const [post, setPost] = useState(postToReview ?? initializePost(id));
   const [isEditing, setIsEditing] = useState(true);
 
+  const setTitle = (title: string) => {
+    setPost({
+      ...post,
+      postMetadata: {
+        ...post.postMetadata,
+        title: title
+      }
+    });
+  }
+
   return (
     <div className="draft">
-      <TitleInput post={post} setPost={setPost} />
+      <TitleInput title={post.postMetadata.title} setTitle={setTitle} />
       <PostViewToggle post={post} setPost={setPost} isEditing={isEditing} />
       <SideButtons isEditing={isEditing} setIsEditing={setIsEditing} />
       <BottomButtons post={post} />

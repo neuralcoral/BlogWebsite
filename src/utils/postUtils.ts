@@ -1,6 +1,6 @@
-import Post, { Status } from '../models/post';
+import { Status, PostMetadata } from '../models/post';
 
-export const initializePost = (id: string | undefined): Post => {
+export const initializePost = (id: string | undefined): PostMetadata => {
   if (typeof id === 'undefined') {
     throw new Error('Post ID is undefined');
   }
@@ -8,6 +8,7 @@ export const initializePost = (id: string | undefined): Post => {
   return {
     id: String(id),
     title: 'New Post',
+    preview: '',
     body: '',
     status: Status.Draft,
     createdAt: new Date(Date.now().toLocaleString()),

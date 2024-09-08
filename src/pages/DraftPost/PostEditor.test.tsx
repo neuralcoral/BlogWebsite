@@ -7,7 +7,7 @@ describe('PostEditor  component', () => {
     render(<PostEditor post={fakePost} setPost={jest.fn()} />);
     const editor = screen.getByRole('textbox');
     expect(editor).toBeInTheDocument();
-    expect(editor).toHaveValue(fakePost.body);
+    expect(editor).toHaveValue(fakePost.content);
   });
 
   test('updates post body on text change', () => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Post from '../../models/post';
+import PostMetadata from '../../models/post';
 import { getPostedPosts } from '../../api/posts';
 
 const BlogEntry: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostMetadata[]>([]);
 
   useEffect(() => {
     const abortController = new AbortController();

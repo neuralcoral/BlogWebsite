@@ -1,17 +1,18 @@
 import React from 'react';
-import Post from '../../models/post';
 import './DraftPost.css';
 
-const TitleInput: React.FC<{ post: Post; setPost: (post: Post) => void }> = ({ post, setPost }) => {
+interface TitleInputProps {
+  title: string;
+  setTitle: (title: string) => void 
+}
+
+const TitleInput: React.FC<TitleInputProps> = ({ title, setTitle }) => {
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setPost({
-      ...post,
-      title: e.target.value
-    });
+    setTitle(e.target.value);
   };
   return (
     <div className="draft-title">
-      <input onChange={handleChange} value={post.title} />
+      <input onChange={handleChange} value={title} />
     </div>
   );
 };

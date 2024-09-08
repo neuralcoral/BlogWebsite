@@ -1,17 +1,17 @@
-import Post, { Status } from '../models/post';
+import { Status, PostMetadata } from '../models/post';
 import dummyPosts from './dummy-posts';
 
-export const getPostedPosts = async ({ signal }: { signal?: AbortSignal }): Promise<Post[]> => {
+export const getPostedPosts = async ({ signal }: { signal?: AbortSignal }): Promise<PostMetadata[]> => {
   const status = Status.Posted;
   return getPosts({ signal, status });
 };
 
-export const getDraftedPosts = async ({ signal }: { signal?: AbortSignal }): Promise<Post[]> => {
+export const getDraftedPosts = async ({ signal }: { signal?: AbortSignal }): Promise<PostMetadata[]> => {
   const status = Status.Draft;
   return getPosts({ signal, status });
 };
 
-export const getPosts = async ({ signal, status }: { signal?: AbortSignal; status?: Status }): Promise<Post[]> => {
+export const getPosts = async ({ signal, status }: { signal?: AbortSignal; status?: Status }): Promise<PostMetadata[]> => {
   return new Promise((resolve, reject) => {
     let posts = dummyPosts;
     if (status) {
@@ -36,11 +36,11 @@ export const getPost = (id: string) => {
   return posts[0];
 };
 
-export const createDraft = (post: Post) => {
+export const createDraft = (post: PostMetadata) => {
   dummyPosts.push(post);
 };
 
-export const submitPost = (post: Post) => {
+export const submitPost = (post: PostMetadata) => {
   const newPost = {
     ...post,
     status: Status.Posted,

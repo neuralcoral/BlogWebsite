@@ -1,15 +1,15 @@
 import './DraftPost.css';
-import Post from '../../models/post';
+import { PostMetadata } from '../../models/post';
 import { createDraft } from '../../api/posts';
 import { useNavigate } from 'react-router-dom';
 import { buildReviewPostUrl } from '../../utils/postUtils';
 
 interface BottomButtonsProps {
-  post: Post;
+  post: PostMetadata;
 }
 const BottomButtons: React.FC<BottomButtonsProps> = ({ post }) => {
   const navigate = useNavigate();
-  const handleReview = (post: Post) => {
+  const handleReview = (post: PostMetadata) => {
     createDraft(post);
     navigate(buildReviewPostUrl(post.id), { state: { post: post } });
   };

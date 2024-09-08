@@ -1,13 +1,15 @@
-import Post from '../../models/post';
+import { Post } from '../../models/post';
 import PostEditor from './PostEditor';
 import PostPreview from './PostPreview';
 import './DraftPost.css';
+import { useEffect, useState } from 'react';
 
 interface PostViewToggleProps {
   post: Post;
   setPost: (post: Post) => void;
   isEditing: boolean;
 }
+
 const PostViewToggle: React.FC<PostViewToggleProps> = ({ post, setPost, isEditing }) => {
   return (
     <div className="draft-text">
