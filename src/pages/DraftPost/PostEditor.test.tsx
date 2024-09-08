@@ -1,13 +1,10 @@
-import PostEditor from "./PostEditor";
+import PostEditor from './PostEditor';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { fakePost } from "../../test_utils/mock_data";
+import { fakePost } from '../../test_utils/mock_data';
 
-describe('PostEditor  component', () => { 
-
+describe('PostEditor  component', () => {
   test('initial state', () => {
-    render(
-      <PostEditor post={fakePost} setPost={jest.fn()}/>
-    )
+    render(<PostEditor post={fakePost} setPost={jest.fn()} />);
     const editor = screen.getByRole('textbox');
     expect(editor).toBeInTheDocument();
     expect(editor).toHaveValue(fakePost.body);
@@ -15,9 +12,7 @@ describe('PostEditor  component', () => {
 
   test('updates post body on text change', () => {
     const setPostMock = jest.fn();
-    render(
-      <PostEditor post={fakePost} setPost={setPostMock}/>
-    )
+    render(<PostEditor post={fakePost} setPost={setPostMock} />);
     const editor = screen.getByRole('textbox');
     fireEvent.change(editor, { target: { value: 'Updated Text' } });
 

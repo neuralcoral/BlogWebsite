@@ -15,19 +15,19 @@ jest.mock('../../pages/EditPosts/EditPosts', () => () => <div>Mocked EditPosts</
 describe('Content Component', () => {
   test('renders Home page on default route', () => {
     renderWithRouter(<Content />);
-    expect(screen.getByText(/Mocked Home/i)).toBeInTheDocument(); 
+    expect(screen.getByText(/Mocked Home/i)).toBeInTheDocument();
   });
 
   test('renders Login page on /login route', () => {
     window.history.pushState({}, 'Login page', '/login');
     renderWithRouter(<Content />);
-    expect(screen.getByText(/Mocked Login/i)).toBeInTheDocument(); 
+    expect(screen.getByText(/Mocked Login/i)).toBeInTheDocument();
   });
 
   test('renders DraftPost page on /posts/:id/draft route', () => {
     window.history.pushState({}, 'Draft Post page', '/posts/123/draft');
     renderWithRouter(<Content />);
-    expect(screen.getByText(/Mocked DraftPost/i)).toBeInTheDocument(); 
+    expect(screen.getByText(/Mocked DraftPost/i)).toBeInTheDocument();
   });
 
   test('renders ReviewPost page on /posts/:id/review route', () => {
@@ -39,6 +39,6 @@ describe('Content Component', () => {
   test('renders EditPosts page on /posts/edit route', () => {
     window.history.pushState({}, 'Edit Posts page', '/posts/edit');
     renderWithRouter(<Content />);
-    expect(screen.getByText(/Mocked EditPosts/i)).toBeInTheDocument(); 
+    expect(screen.getByText(/Mocked EditPosts/i)).toBeInTheDocument();
   });
 });

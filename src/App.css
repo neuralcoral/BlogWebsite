@@ -9,7 +9,7 @@
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 10px;
-  grid-row-gap: 0px; 
+  grid-row-gap: 0px;
 }
 .navbar {
   grid-area: 1 / 1 / -1 / 2;

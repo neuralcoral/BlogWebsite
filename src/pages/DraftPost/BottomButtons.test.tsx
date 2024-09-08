@@ -1,10 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Post, { Status } from '../../models/post';
-import BottomButtons from "./BottomButtons";
-import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
+import BottomButtons from './BottomButtons';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { createDraft } from '../../api/posts';
 import { buildReviewPostUrl } from '../../utils/postUtils';
-
 
 const mockNavigate = jest.fn();
 jest.mock('../../api/posts');
@@ -13,7 +12,6 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockNavigate
 }));
 describe('BottomButtons componenet', () => {
-
   const post: Post = {
     id: 'some-uuid',
     title: 'Title',
@@ -45,7 +43,7 @@ describe('BottomButtons componenet', () => {
 
     expect(button).toBeInTheDocument();
     fireEvent.click(button);
-    
+
     expect(createDraft).toHaveBeenCalledWith(post);
   });
 
@@ -60,10 +58,8 @@ describe('BottomButtons componenet', () => {
 
     expect(button).toBeInTheDocument();
     fireEvent.click(button);
-    
+
     expect(createDraft).toHaveBeenCalledWith(post);
-    expect(mockNavigate).toHaveBeenCalledWith(buildReviewPostUrl(post.id), {state: {post: post}});
-
-  })
-
-})
+    expect(mockNavigate).toHaveBeenCalledWith(buildReviewPostUrl(post.id), { state: { post: post } });
+  });
+});

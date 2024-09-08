@@ -1,19 +1,18 @@
 import './App.css';
 import Content from './components/Content/Content';
-import NavBar from "./components/NavBar/NavBar";
+import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <header className="App-header">
-      </header>
+      <header className="App-header"></header>
       <BrowserRouter>
-        <div className='app'>
-          <div className='navbar'>
-            <NavBar /> 
+        <div className="app">
+          <div className="navbar">
+            <NavBar />
           </div>
-          <div className='content'>
+          <div className="content">
             <Content />
           </div>
         </div>

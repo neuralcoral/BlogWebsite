@@ -7,9 +7,7 @@ jest.mock('./components/Content/Content', () => () => <div>Mocked Content</div>)
 
 describe('App Component', () => {
   test('renders NavBar and Content components', () => {
-    render(
-      <App />
-    );
+    render(<App />);
 
     expect(screen.getByText('Mocked NavBar')).toBeInTheDocument();
     expect(screen.getByText('Mocked Content')).toBeInTheDocument();

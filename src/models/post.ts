@@ -1,14 +1,13 @@
-
 export enum Status {
-  Draft = "DRAFT",
+  Draft = 'DRAFT',
   Posted = 'POSTED'
-};
+}
 
 export default interface Post {
   id: string;
   title: string;
   body: string;
-  status: Status
+  status: Status;
   createdAt: Date;
   updatedAt: Date | null;
 }

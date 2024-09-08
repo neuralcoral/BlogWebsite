@@ -1,13 +1,14 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
-import DraftPost from "./DraftPost";
+import DraftPost from './DraftPost';
+import { initializePost } from '../../utils/postUtils';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: () => ({
     state: {}
   }),
-  useParams: () => ({id: 'new-uuid'}),
+  useParams: () => ({ id: 'new-uuid' })
 }));
 
 jest.mock('../../utils/postUtils', () => ({
@@ -19,28 +20,25 @@ jest.mock('./SideButtons', () => () => <div>Mocked SideButtons</div>);
 jest.mock('./BottomButtons', () => () => <div>Mocked BottomButtons</div>);
 
 describe('DraftPost component', () => {
-
   test('initial state', () => {
     render(
       <Router>
         <DraftPost />
       </Router>
-    )
+    );
 
     expect(screen.getByText(/Mocked TitleInput/i)).toBeInTheDocument();
     expect(screen.getByText(/Mocked PostViewToggle/i)).toBeInTheDocument();
     expect(screen.getByText(/Mocked SideButtons/i)).toBeInTheDocument();
     expect(screen.getByText(/Mocked BottomButtons/i)).toBeInTheDocument();
-
   });
 
   test('calls initializePost when postToReview is undefiend', () => {
-    const { initializePost } = require('../../utils/postUtils');
     render(
       <Router>
         <DraftPost />
       </Router>
     );
     expect(initializePost).toHaveBeenCalledWith('new-uuid');
-  }) 
+  });
 });
