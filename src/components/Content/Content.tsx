@@ -4,7 +4,7 @@ import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import DraftPost from '../../pages/DraftPost/DraftPost';
 import ReviewPost from '../../pages/ReviewPost/ReviewPost';
-import EditPostPreviews from '../../pages/EditPosts/EditPostPreviews';
+import EditPostPreviews from '../../pages/EditPostPreviews/EditPostPreviews';
 
 const Content: React.FC = () => {
   return (

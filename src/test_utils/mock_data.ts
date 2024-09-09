@@ -1,4 +1,4 @@
-import PostMetadata, { Post, Status } from '../models/post';
+import { PostMetadata, Post, Status } from '../models/post';
 import { v4 as uuid } from 'uuid';
 import { faker } from '@faker-js/faker';
 

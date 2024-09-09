@@ -10,7 +10,7 @@ describe('PostEditor  component', () => {
     expect(editor).toHaveValue(fakePost.content);
   });
 
-  test('updates post body on text change', () => {
+  test('updates post content on text change', () => {
     const setPostMock = jest.fn();
     render(<PostEditor post={fakePost} setPost={setPostMock} />);
     const editor = screen.getByRole('textbox');
@@ -18,7 +18,7 @@ describe('PostEditor  component', () => {
 
     expect(setPostMock).toHaveBeenCalledWith({
       ...fakePost,
-      body: 'Updated Text'
+      content: 'Updated Text'
     });
   });
 });

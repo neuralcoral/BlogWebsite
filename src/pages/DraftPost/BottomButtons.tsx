@@ -1,22 +1,14 @@
 import './DraftPost.css';
-import { PostMetadata } from '../../models/post';
-import { createDraft } from '../../api/posts';
-import { useNavigate } from 'react-router-dom';
-import { buildReviewPostUrl } from '../../utils/postUtils';
 
 interface BottomButtonsProps {
-  post: PostMetadata;
+  handleSave: () => void;
+  handleReview: () => void;
 }
-const BottomButtons: React.FC<BottomButtonsProps> = ({ post }) => {
-  const navigate = useNavigate();
-  const handleReview = (post: PostMetadata) => {
-    createDraft(post);
-    navigate(buildReviewPostUrl(post.id), { state: { post: post } });
-  };
+const BottomButtons: React.FC<BottomButtonsProps> = ({ handleSave, handleReview }) => {
   return (
     <div className="bottom-buttons">
-      <button onClick={() => createDraft(post)}>Save</button>
-      <button onClick={() => handleReview(post)}>Review</button>
+      <button onClick={ handleSave }>Save</button>
+      <button onClick={ handleReview }>Review</button>
     </div>
   );
 };

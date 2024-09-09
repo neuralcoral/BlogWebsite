@@ -1,19 +1,18 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
-import PostMetadata from '../../models/post';
+import { PostMetadata } from '../../models/post';
 import { getPostedPosts } from '../../api/posts';
 
 const BlogEntry: React.FC = () => {
-  const [posts, setPosts] = useState<PostMetadata[]>([]);
+  const [postMetadataEntries, setPostMetadataEntries] = useState<PostMetadata[]>([]);
 
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
     const fetchPosts = async () => {
       try {
-        const postedPosts = await getPostedPosts({ signal });
-        setPosts(postedPosts);
-        console.log(postedPosts);
+        const postedPostMetadataEntries = await getPostedPosts({ signal });
+        setPostMetadataEntries(postedPostMetadataEntries);
+        console.log(postedPostMetadataEntries);
       } catch (error) {
         console.error('Failed to fetch posts: ', error);
       }
@@ -26,11 +25,11 @@ const BlogEntry: React.FC = () => {
 
   return (
     <>
-      {posts.map((post) => {
+      {postMetadataEntries.map((postMetadata) => {
         return (
-          <div key={post.id} className="post-preview">
-            <h2>{post.title}</h2>
-            <p>{post.body.substring(0, 100)}...</p>
+          <div key={postMetadata.id} className="post-preview">
+            <h2>{postMetadata.title}</h2>
+            <p>{postMetadata.previewText}</p>
           </div>
         );
       })}

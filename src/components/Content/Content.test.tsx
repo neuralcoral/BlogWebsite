@@ -10,7 +10,7 @@ jest.mock('../../pages/Home/Home', () => () => <div>Mocked Home</div>);
 jest.mock('../../pages/Login/Login', () => () => <div>Mocked Login</div>);
 jest.mock('../../pages/DraftPost/DraftPost', () => () => <div>Mocked DraftPost</div>);
 jest.mock('../../pages/ReviewPost/ReviewPost', () => () => <div>Mocked ReviewPost</div>);
-jest.mock('../../pages/EditPostPreviews/EditPostPreviews', () => () => <div>Mocked EditPosts</div>);
+jest.mock('../../pages/EditPostPreviews/EditPostPreviews', () => () => <div>Mocked EditPostPreviews</div>);
 
 describe('Content Component', () => {
   test('renders Home page on default route', () => {

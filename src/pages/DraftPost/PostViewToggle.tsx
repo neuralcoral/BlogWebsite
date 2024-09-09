@@ -2,7 +2,6 @@ import { Post } from '../../models/post';
 import PostEditor from './PostEditor';
 import PostPreview from './PostPreview';
 import './DraftPost.css';
-import { useEffect, useState } from 'react';
 
 interface PostViewToggleProps {
   post: Post;

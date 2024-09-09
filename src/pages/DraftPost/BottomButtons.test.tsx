@@ -1,57 +1,36 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import BottomButtons from './BottomButtons';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { createDraft } from '../../api/posts';
-import { buildReviewPostUrl } from '../../utils/postUtils';
-import { fakePostMetadata } from '../../test_utils/mock_data';
 
-const mockNavigate = jest.fn();
-jest.mock('../../api/posts');
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockNavigate
-}));
 describe('BottomButtons componenet', () => {
 
   test('displays buttons', () => {
-    render(
-      <Router>
-        <BottomButtons post={fakePostMetadata} />
-      </Router>
-    );
+    render(<BottomButtons handleReview={jest.fn()} handleSave={jest.fn()} /> );
 
     expect(screen.getByText(/Save/i)).toBeInTheDocument();
     expect(screen.getByText(/Review/i)).toBeInTheDocument();
   });
 
-  test('clicking on Save saves draft', () => {
-    render(
-      <Router>
-        <BottomButtons post={fakePostMetadata} />
-      </Router>
-    );
+  test('clicking on Save triggers save', () => {
+    const mockHandleSave = jest.fn();
+    render(<BottomButtons handleReview={jest.fn()} handleSave={mockHandleSave} /> );
 
     const button = screen.getByText(/Save/i);
 
     expect(button).toBeInTheDocument();
     fireEvent.click(button);
 
-    expect(createDraft).toHaveBeenCalledWith(fakePostMetadata);
+    expect(mockHandleSave).toHaveBeenCalled();
   });
 
-  test('clicking on Review saves and navigates', () => {
-    render(
-      <Router>
-        <BottomButtons post={fakePostMetadata} />
-      </Router>
-    );
+  test('clicking on Review triggers review', () => {
+    const mockHandleReview = jest.fn();
+    render(<BottomButtons handleReview={mockHandleReview} handleSave={jest.fn()} /> );
 
     const button = screen.getByText(/Review/i);
 
     expect(button).toBeInTheDocument();
     fireEvent.click(button);
 
-    expect(createDraft).toHaveBeenCalledWith(fakePostMetadata);
-    expect(mockNavigate).toHaveBeenCalledWith(buildReviewPostUrl(fakePostMetadata.id), { state: { post: fakePostMetadata } });
+    expect(mockHandleReview).toHaveBeenCalled();
   });
 });
