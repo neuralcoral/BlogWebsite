@@ -18,8 +18,8 @@ const TitleInput: React.FC<TitleInputProps> = ({ post, dispatch }) => {
           ...post.metadata,
           title: e.target.value
         }
-        
-      }
+      },
+      callback: () => {}
     });
   };
   return (

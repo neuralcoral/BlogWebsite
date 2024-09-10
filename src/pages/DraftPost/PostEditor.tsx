@@ -8,14 +8,14 @@ export interface PostEditorProps {
 
 const PostEditor: React.FC<PostEditorProps> = ({ post, dispatch }) => {
   const handleChange: React.ChangeEventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const action: DraftPostAction = {
-        type: DraftPostActionType.CHANGE,
-        newPost: {
-          ...post,
-          content: e.target.value
-        }
-      }
-    dispatch(action);
+    dispatch({
+      type: DraftPostActionType.CHANGE,
+      newPost: {
+        ...post,
+        content: e.target.value
+      },
+      callback: () => { }
+    });
   };
   return <textarea value={post.content} onChange={handleChange} />;
 };

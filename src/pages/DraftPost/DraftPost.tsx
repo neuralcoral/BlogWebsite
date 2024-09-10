@@ -1,7 +1,7 @@
 import './DraftPost.css';
 import { ChangeEvent, useRef, useState, useContext, useReducer } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { buildReviewPostUrl, initializePost } from '../../utils/postUtils';
+import { initializePost } from '../../utils/postUtils';
 import TitleInput from './TitleInput';
 import SideButtons from './SideButtons';
 import BottomButtons from './BottomButtons';
@@ -39,6 +39,7 @@ export enum DraftPostActionType {
 export interface DraftPostAction {
   type: DraftPostActionType;
   newPost: Post;
+  callback: () => void;
 }
 
 function draftPostReducer(post: Post, action: DraftPostAction) {
@@ -47,9 +48,8 @@ function draftPostReducer(post: Post, action: DraftPostAction) {
       createDraft(post.metadata);
       break;
     case DraftPostActionType.REVIEW:
-      const navigate = useNavigate();
       createDraft(post.metadata);
-      navigate(buildReviewPostUrl(post.metadata.id), { state: { post: post } });
+      action.callback()
       break;
     case DraftPostActionType.CHANGE:
       return action.newPost;

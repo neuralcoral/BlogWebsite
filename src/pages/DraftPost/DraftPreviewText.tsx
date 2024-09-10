@@ -16,7 +16,8 @@ const DraftPreviewText: React.FC<DraftPreviewTextProps> = ({ post, dispatch }) =
                     ...post.metadata,
                     previewText: e.target.value
                 }
-            }
+            },
+            callback: () => {}
         });
     }
     return (
