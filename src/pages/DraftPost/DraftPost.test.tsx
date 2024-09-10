@@ -94,7 +94,6 @@ describe('DraftPost component', () => {
     fireEvent.click(screen.getByText(/Mocked TitleInput/i));
 
     expect(initializePost).toHaveBeenCalledWith('new-uuid');
-    expect(initializePost.mock.calls[0][0]).toBe('new-uuid');
   });
 
   test('calls createDraft when handleSave is triggered', () => {

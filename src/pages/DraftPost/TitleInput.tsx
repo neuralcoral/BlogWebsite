@@ -1,18 +1,30 @@
 import React from 'react';
+import { Post } from '../../models/post';
+import { DraftPostAction, DraftPostActionType } from './DraftPost';
 import './DraftPost.css';
 
 interface TitleInputProps {
-  title: string;
-  setTitle: (title: string) => void 
+  post: Post;
+  dispatch: React.Dispatch<DraftPostAction>;
 }
 
-const TitleInput: React.FC<TitleInputProps> = ({ title, setTitle }) => {
+const TitleInput: React.FC<TitleInputProps> = ({ post, dispatch }) => {
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setTitle(e.target.value);
+    dispatch({
+      type: DraftPostActionType.CHANGE,
+      newPost: {
+        ...post,
+        metadata: {
+          ...post.metadata,
+          title: e.target.value
+        }
+        
+      }
+    });
   };
   return (
     <div className="draft-title">
-      <input onChange={handleChange} value={title} />
+      <input onChange={handleChange} value={post.metadata.title} />
     </div>
   );
 };

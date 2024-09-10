@@ -1,52 +1,63 @@
 import './DraftPost.css';
-import { useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { ChangeEvent, useRef, useState, useContext, useReducer } from 'react';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { buildReviewPostUrl, initializePost } from '../../utils/postUtils';
 import TitleInput from './TitleInput';
 import SideButtons from './SideButtons';
 import BottomButtons from './BottomButtons';
 import PostViewToggle from './PostViewToggle';
 import { createDraft } from '../../api/posts';
-import { useNavigate } from 'react-router-dom';
+import DraftPreviewText from './DraftPreviewText';
+import { DraftContext } from './DraftContext';
+import { Post, PostMetadata } from '../../models/post';
 
 const DraftPost: React.FC = () => {
-
   const { id } = useParams<{ id: string }>();
   const location = useLocation();
-  const postToReview = location.state?.post;
-  const [post, setPost] = useState(postToReview ?? initializePost(id));
+  const initialPost = location.state?.post ?? initializePost(id);
+  const [post, dispatch] = useReducer(draftPostReducer, initialPost);
 
   const [isEditing, setIsEditing] = useState(true);
 
-  const navigate = useNavigate();
-
-  const setTitle = (title: string) => {
-    setPost({
-      ...post,
-      postMetadata: {
-        ...post.postMetadata,
-        title: title
-      }
-    });
-  }
-
-  const handleSave = () => {
-    createDraft(post);
-  };
-
-  const handleReview = () => {
-    createDraft(post);
-    navigate(buildReviewPostUrl(post.metadata.id), { state: { post: post } });
-  };
-
   return (
     <div className="draft">
-      <TitleInput title={post.metadata.title} setTitle={setTitle} />
-      <PostViewToggle post={post} setPost={setPost} isEditing={isEditing} />
+      <TitleInput post={post} dispatch={dispatch} />
+      <DraftPreviewText  post={post} dispatch={dispatch}/>
+      <PostViewToggle post={post} dispatch={dispatch} isEditing={isEditing} />
       <SideButtons isEditing={isEditing} setIsEditing={setIsEditing} />
-      <BottomButtons handleSave={handleSave} handleReview={handleReview} />
+      <BottomButtons dispatch={dispatch} post={post}/>
     </div>
   );
 };
+
+export enum DraftPostActionType {
+  SAVE,
+  REVIEW,
+  CHANGE
+}
+
+export interface DraftPostAction {
+  type: DraftPostActionType;
+  newPost: Post;
+}
+
+function draftPostReducer(post: Post, action: DraftPostAction) {
+  switch (action.type) {
+    case DraftPostActionType.SAVE:
+      createDraft(post.metadata);
+      break;
+    case DraftPostActionType.REVIEW:
+      const navigate = useNavigate();
+      createDraft(post.metadata);
+      navigate(buildReviewPostUrl(post.metadata.id), { state: { post: post } });
+      break;
+    case DraftPostActionType.CHANGE:
+      return action.newPost;
+    default:
+      throw Error('Unknown action: ' + action);
+  }
+
+  return post;
+}
 
 export default DraftPost;
