@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Post } from '../../models/post';
 import { usePost } from './DraftPostContext';
 
-export interface PostPreviewProps { }
+export interface PostPreviewProps {}
 const PostPreview: React.FC<PostPreviewProps> = () => {
   const post = usePost();
   return (

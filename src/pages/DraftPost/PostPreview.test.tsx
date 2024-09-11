@@ -5,10 +5,9 @@ import PostPreview from './PostPreview';
 
 jest.mock('./DraftPostContext');
 describe('PostPreview component', () => {
-
   beforeEach(() => {
     (usePost as jest.Mock).mockReturnValue(fakePost);
-  })
+  });
 
   test('initial state', () => {
     render(<PostPreview />);

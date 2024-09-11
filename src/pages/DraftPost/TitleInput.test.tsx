@@ -6,17 +6,16 @@ import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContex
 
 jest.mock('./DraftPostContext');
 describe('TestInput component', () => {
-
   const mockPostDispatch = jest.fn();
 
   beforeEach(() => {
     (usePost as jest.Mock).mockReturnValue(fakePost);
     (usePostDispatch as jest.Mock).mockReturnValue(mockPostDispatch);
-  })
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
-  })
+  });
 
   test('initial state', () => {
     render(<TitleInput />);

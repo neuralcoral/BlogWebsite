@@ -1,13 +1,12 @@
 import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContext';
 
-
-export interface PostEditorProps { }
+export interface PostEditorProps {}
 const PostEditor: React.FC<PostEditorProps> = () => {
   const post = usePost();
   const dispatch = usePostDispatch();
   const handleChange: React.ChangeEventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!dispatch) {
-      throw new Error("dispatch must be used within a Provider");
+      throw new Error('dispatch must be used within a Provider');
     }
     if (!post) {
       throw new Error('post must be initialized');
@@ -18,7 +17,7 @@ const PostEditor: React.FC<PostEditorProps> = () => {
         ...post,
         content: e.target.value
       },
-      callback: () => { }
+      callback: () => {}
     });
   };
   return <textarea value={post?.content} onChange={handleChange} />;

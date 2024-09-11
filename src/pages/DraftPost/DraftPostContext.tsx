@@ -1,6 +1,6 @@
-import { createContext, useContext } from "react";
-import { Post } from "../../models/post";
-import { createDraft } from "../../api/posts";
+import { createContext, useContext } from 'react';
+import { Post } from '../../models/post';
+import { createDraft } from '../../api/posts';
 
 export const PostContext = createContext<Post | null>(null);
 export const PostDispatchContext = createContext<React.Dispatch<DraftPostAction> | null>(null);
@@ -32,7 +32,7 @@ export function draftPostReducer(post: Post, action: DraftPostAction) {
       break;
     case DraftPostActionType.REVIEW:
       createDraft(post.metadata);
-      action.callback()
+      action.callback();
       break;
     case DraftPostActionType.CHANGE:
       return action.newPost;

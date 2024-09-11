@@ -4,7 +4,7 @@ import './DraftPost.css';
 import { usePost, usePostDispatch, DraftPostActionType, DraftPostAction } from './DraftPostContext';
 import { Post } from '../../models/post';
 
-interface BottomButtonsProps { }
+interface BottomButtonsProps {}
 const BottomButtons: React.FC<BottomButtonsProps> = () => {
   const navigate = useNavigate();
   const post = usePost();
@@ -12,20 +12,20 @@ const BottomButtons: React.FC<BottomButtonsProps> = () => {
 
   const handleSave = () => {
     if (!dispatch) {
-      throw new Error("dispatch must be used within a Provider");
+      throw new Error('dispatch must be used within a Provider');
     }
     if (!post) {
       throw new Error('post must be initialized');
     }
     dispatch({
       type: DraftPostActionType.SAVE,
-      newPost:post,
-      callback: ()=> {}
+      newPost: post,
+      callback: () => {}
     });
   };
   const handleReview = () => {
     if (!dispatch) {
-      throw new Error("dispatch must be used within a Provider");
+      throw new Error('dispatch must be used within a Provider');
     }
     if (!post) {
       throw new Error('post must be initialized');
@@ -33,15 +33,13 @@ const BottomButtons: React.FC<BottomButtonsProps> = () => {
     dispatch({
       type: DraftPostActionType.REVIEW,
       newPost: post,
-      callback: () => navigate(
-        buildReviewPostUrl(post?.metadata.id), { state: { post: post } }
-      )
-    })
+      callback: () => navigate(buildReviewPostUrl(post?.metadata.id), { state: { post: post } })
+    });
   };
   return (
     <div className="bottom-buttons">
-      <button onClick={ handleSave }>Save</button>
-      <button onClick={ handleReview }>Review</button>
+      <button onClick={handleSave}>Save</button>
+      <button onClick={handleReview}>Review</button>
     </div>
   );
 };

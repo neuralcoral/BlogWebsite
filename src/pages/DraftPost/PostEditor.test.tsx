@@ -10,11 +10,11 @@ describe('PostEditor  component', () => {
   beforeEach(() => {
     (usePost as jest.Mock).mockReturnValue(fakePost);
     (usePostDispatch as jest.Mock).mockReturnValue(mockPostDispatch);
-  })
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
-  })
+  });
 
   test('initial state', () => {
     render(<PostEditor />);

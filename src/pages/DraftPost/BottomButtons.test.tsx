@@ -6,17 +6,16 @@ import { fakePost } from '../../test_utils/mock_data';
 
 jest.mock('./DraftPostContext');
 describe('BottomButtons componenet', () => {
-
   beforeEach(() => {
     (usePost as jest.Mock).mockReturnValue(fakePost);
-  })
+  });
 
   test('displays buttons', () => {
     render(
       <Router>
         <BottomButtons />
       </Router>
-   );
+    );
 
     expect(screen.getByText(/Save/i)).toBeInTheDocument();
     expect(screen.getByText(/Review/i)).toBeInTheDocument();

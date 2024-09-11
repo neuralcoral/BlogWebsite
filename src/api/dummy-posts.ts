@@ -56,7 +56,8 @@ const dummyPosts: PostMetadata[] = [
   {
     id: uuid(),
     title: 'REST API Design Best Practices',
-    previewText: 'REST APIs are a crucial part of modern web development, providing a way to interact with web services.',
+    previewText:
+      'REST APIs are a crucial part of modern web development, providing a way to interact with web services.',
     bodyUrl: faker.internet.url(),
     status: Status.Draft,
     createdAt: new Date('2024-08-12T10:05:00Z'),
@@ -76,7 +77,8 @@ const dummyPosts: PostMetadata[] = [
   {
     id: uuid(),
     title: 'Introduction to Kubernetes',
-    previewText: 'Kubernetes is an open-source system for automating the deployment, scaling, and management of containerized applications.',
+    previewText:
+      'Kubernetes is an open-source system for automating the deployment, scaling, and management of containerized applications.',
     bodyUrl: faker.internet.url(),
     status: Status.Draft,
     createdAt: new Date('2024-08-16T07:50:00Z'),
@@ -86,7 +88,8 @@ const dummyPosts: PostMetadata[] = [
   {
     id: uuid(),
     title: 'Understanding GraphQL',
-    previewText: 'GraphQL is a query language for APIs and a runtime for executing those queries by using a type system you define for your data.',
+    previewText:
+      'GraphQL is a query language for APIs and a runtime for executing those queries by using a type system you define for your data.',
     bodyUrl: faker.internet.url(),
     status: Status.Posted,
     createdAt: new Date('2024-08-18T12:30:00Z'),

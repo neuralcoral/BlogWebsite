@@ -6,12 +6,9 @@ interface EditPostPreviewProps {
 }
 const EditPostPreview: React.FC<EditPostPreviewProps> = ({ postMetadata }) => {
   return (
-    <div 
-    key={postMetadata.id} 
-    className="post-preview"
-    >
-      <h2>{ postMetadata.title }</h2>
-      <p>{ postMetadata.previewText }</p>
+    <div key={postMetadata.id} className="post-preview">
+      <h2>{postMetadata.title}</h2>
+      <p>{postMetadata.previewText}</p>
     </div>
   );
 };

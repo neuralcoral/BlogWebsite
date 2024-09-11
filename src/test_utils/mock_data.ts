@@ -6,7 +6,7 @@ export const fakePostMetadata: PostMetadata = {
   id: uuid(),
   title: faker.lorem.sentence(),
   bodyUrl: faker.internet.url(),
-  previewText: faker.lorem.sentences({min:1, max: 4}),
+  previewText: faker.lorem.sentences({ min: 1, max: 4 }),
   status: Status.Draft,
   createdAt: new Date(Date.now().toLocaleString()),
   updatedAt: null,
@@ -68,7 +68,8 @@ export const fakePostMetadataEntries: PostMetadata[] = [
     id: uuid(),
     title: 'REST API Design Best Practices',
     bodyUrl: faker.internet.url(),
-    previewText: 'REST APIs are a crucial part of modern web development, providing a way to interact with web services.',
+    previewText:
+      'REST APIs are a crucial part of modern web development, providing a way to interact with web services.',
     status: Status.Draft,
     createdAt: new Date('2024-08-12T10:05:00Z'),
     updatedAt: null,
@@ -87,7 +88,8 @@ export const fakePostMetadataEntries: PostMetadata[] = [
   {
     id: uuid(),
     title: 'Introduction to Kubernetes',
-    previewText: 'Kubernetes is an open-source system for automating the deployment, scaling, and management of containerized applications.',
+    previewText:
+      'Kubernetes is an open-source system for automating the deployment, scaling, and management of containerized applications.',
     bodyUrl: faker.internet.url(),
     status: Status.Draft,
     createdAt: new Date('2024-08-16T07:50:00Z'),
@@ -97,7 +99,8 @@ export const fakePostMetadataEntries: PostMetadata[] = [
   {
     id: uuid(),
     title: 'Understanding GraphQL',
-    previewText: 'GraphQL is a query language for APIs and a runtime for executing those queries by using a type system you define for your data.',
+    previewText:
+      'GraphQL is a query language for APIs and a runtime for executing those queries by using a type system you define for your data.',
     bodyUrl: faker.internet.url(),
     status: Status.Posted,
     createdAt: new Date('2024-08-18T12:30:00Z'),
@@ -118,5 +121,5 @@ export const fakePostMetadataEntries: PostMetadata[] = [
 
 export const fakePost: Post = {
   metadata: fakePostMetadata,
-  content: faker.lorem.paragraph({min: 2, max: 10})
-} ;
+  content: faker.lorem.paragraph({ min: 2, max: 10 })
+};

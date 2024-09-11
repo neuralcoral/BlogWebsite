@@ -11,7 +11,13 @@ export const getDraftedPosts = async ({ signal }: { signal?: AbortSignal }): Pro
   return getPosts({ signal, status });
 };
 
-export const getPosts = async ({ signal, status }: { signal?: AbortSignal; status?: Status }): Promise<PostMetadata[]> => {
+export const getPosts = async ({
+  signal,
+  status
+}: {
+  signal?: AbortSignal;
+  status?: Status;
+}): Promise<PostMetadata[]> => {
   return new Promise((resolve, reject) => {
     let posts = dummyPosts;
     if (status) {

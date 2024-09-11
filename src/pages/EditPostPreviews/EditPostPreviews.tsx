@@ -24,7 +24,9 @@ const EditPostPreviews: React.FC = () => {
   }, []);
   return (
     <>
-      {postMetadataEntries.map((postMetadata) => <EditPostPreview key={postMetadata.id} postMetadata={postMetadata} /> )}
+      {postMetadataEntries.map((postMetadata) => (
+        <EditPostPreview key={postMetadata.id} postMetadata={postMetadata} />
+      ))}
     </>
   );
 };

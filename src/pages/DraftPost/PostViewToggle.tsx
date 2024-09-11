@@ -6,12 +6,8 @@ interface PostViewToggleProps {
   isEditing: boolean;
 }
 
-const PostViewToggle: React.FC<PostViewToggleProps> = ({isEditing }) => {
-  return (
-    <div className="draft-text">
-      {isEditing ? <PostEditor /> : <PostPreview />}
-    </div>
-  );
+const PostViewToggle: React.FC<PostViewToggleProps> = ({ isEditing }) => {
+  return <div className="draft-text">{isEditing ? <PostEditor /> : <PostPreview />}</div>;
 };
 
 export default PostViewToggle;
