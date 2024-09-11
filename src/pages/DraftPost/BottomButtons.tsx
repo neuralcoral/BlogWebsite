@@ -1,21 +1,43 @@
 import { useNavigate } from 'react-router-dom';
-import { Post } from '../../models/post';
 import { buildReviewPostUrl } from '../../utils/postUtils';
-import { DraftPostAction, DraftPostActionType } from './DraftPost';
 import './DraftPost.css';
+import { usePost, usePostDispatch, DraftPostActionType, DraftPostAction } from './DraftPostContext';
+import { Post } from '../../models/post';
 
-interface BottomButtonsProps {
-  dispatch: React.Dispatch<DraftPostAction>,
-  post: Post
-}
-const BottomButtons: React.FC<BottomButtonsProps> = ({ dispatch, post }) => {
+interface BottomButtonsProps { }
+const BottomButtons: React.FC<BottomButtonsProps> = () => {
   const navigate = useNavigate();
-  const handleSave = () => {dispatch({type: DraftPostActionType.SAVE, newPost:post, callback: ()=> {}})}
+  const post = usePost();
+  const dispatch = usePostDispatch();
+
+  const handleSave = () => {
+    if (!dispatch) {
+      throw new Error("dispatch must be used within a Provider");
+    }
+    if (!post) {
+      throw new Error('post must be initialized');
+    }
+    dispatch({
+      type: DraftPostActionType.SAVE,
+      newPost:post,
+      callback: ()=> {}
+    });
+  };
   const handleReview = () => {
-    dispatch({type: DraftPostActionType.REVIEW,
-       newPost: post,
-       callback: () => navigate(buildReviewPostUrl(post.metadata.id), { state: { post: post } })
-      })}
+    if (!dispatch) {
+      throw new Error("dispatch must be used within a Provider");
+    }
+    if (!post) {
+      throw new Error('post must be initialized');
+    }
+    dispatch({
+      type: DraftPostActionType.REVIEW,
+      newPost: post,
+      callback: () => navigate(
+        buildReviewPostUrl(post?.metadata.id), { state: { post: post } }
+      )
+    })
+  };
   return (
     <div className="bottom-buttons">
       <button onClick={ handleSave }>Save</button>

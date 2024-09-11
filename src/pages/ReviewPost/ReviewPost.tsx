@@ -4,6 +4,7 @@ import './ReviewPost.css';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { buildDraftPostUrl } from '../../utils/postUtils';
 import { submitPost, getPost } from '../../api/posts';
+import ReactMarkdown from 'react-markdown';
 
 const ReviewPost: React.FC = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const ReviewPost: React.FC = () => {
         <h1>{post.title}</h1>
       </div>
       <div className="review-text">
-        <PostPreview post={post} />
+        <ReactMarkdown>{post.content}</ReactMarkdown>
       </div>
       <div className="review-buttons">
         <button

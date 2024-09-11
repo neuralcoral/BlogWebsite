@@ -1,15 +1,17 @@
-import React from 'react';
-import { Post } from '../../models/post';
-import { DraftPostAction, DraftPostActionType } from './DraftPost';
 import './DraftPost.css';
+import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContext';
 
-interface TitleInputProps {
-  post: Post;
-  dispatch: React.Dispatch<DraftPostAction>;
-}
-
-const TitleInput: React.FC<TitleInputProps> = ({ post, dispatch }) => {
+interface TitleInputProps { }
+const TitleInput: React.FC<TitleInputProps> = () => {
+  const post = usePost();
+  const dispatch = usePostDispatch();
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (!dispatch) {
+      throw new Error("dispatch must be used within a Provider");
+    }
+    if (!post) {
+      throw new Error('post must be initialized');
+    }
     dispatch({
       type: DraftPostActionType.CHANGE,
       newPost: {
@@ -24,7 +26,7 @@ const TitleInput: React.FC<TitleInputProps> = ({ post, dispatch }) => {
   };
   return (
     <div className="draft-title">
-      <input onChange={handleChange} value={post.metadata.title} />
+      <input onChange={handleChange} value={post?.metadata.title} />
     </div>
   );
 };
