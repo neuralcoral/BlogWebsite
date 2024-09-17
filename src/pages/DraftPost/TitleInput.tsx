@@ -1,8 +1,10 @@
 import './DraftPost.css';
 import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContext';
 
-interface TitleInputProps {}
-const TitleInput: React.FC<TitleInputProps> = () => {
+interface TitleInputProps {
+  isEditing: boolean;
+}
+const TitleInput: React.FC<TitleInputProps> = ({ isEditing }) => {
   const post = usePost();
   const dispatch = usePostDispatch();
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -26,7 +28,7 @@ const TitleInput: React.FC<TitleInputProps> = () => {
   };
   return (
     <div className="draft-title">
-      <input onChange={handleChange} value={post?.metadata.title} />
+      {isEditing ? <input onChange={handleChange} value={post?.metadata.title} /> : <h1>{post?.metadata.title}</h1>}
     </div>
   );
 };

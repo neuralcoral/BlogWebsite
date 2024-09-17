@@ -1,44 +1,41 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import TitleInput from './TitleInput';
-import { fakePost, fakePostMetadata } from '../../test_utils/mock_data';
+import { fakePost } from '../../test_utils/mock_data';
 import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContext';
 
-jest.mock('./DraftPostContext');
+jest.mock('./DraftPostContext', () => ({
+  usePost: jest.fn(),
+  usePostDispatch: jest.fn()
+}));
+
 describe('TestInput component', () => {
-  const mockPostDispatch = jest.fn();
-
+  const initialPost = fakePost;
+  const mockDispatch = jest.fn();
   beforeEach(() => {
-    (usePost as jest.Mock).mockReturnValue(fakePost);
-    (usePostDispatch as jest.Mock).mockReturnValue(mockPostDispatch);
+    (usePost as jest.Mock).mockReturnValue(initialPost);
+    (usePostDispatch as jest.Mock).mockReturnValue(mockDispatch);
   });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
   test('initial state', () => {
-    render(<TitleInput />);
+    render(<TitleInput isEditing={true} />);
 
-    expect(screen.getByRole('textbox')).toHaveValue(fakePost.metadata.title);
+    expect(screen.getByRole('textbox')).toHaveValue(initialPost.metadata.title);
   });
 
   test('changing text calls setPost', () => {
-    render(<TitleInput />);
+    render(<TitleInput isEditing={true} />);
 
     const input = screen.getByRole('textbox');
-    expect(input).toHaveValue(fakePostMetadata.title);
+    expect(input).toHaveValue(initialPost.metadata.title);
 
-    fireEvent.change(input, {
-      target: { value: 'Unit Test' }
-    });
+    fireEvent.change(input, { target: { value: 'Unit Test' } });
 
-    expect(mockPostDispatch).toHaveBeenCalledWith({
+    expect(mockDispatch).toHaveBeenCalledWith({
       type: DraftPostActionType.CHANGE,
       newPost: {
-        ...fakePost,
+        ...initialPost,
         metadata: {
-          ...fakePost.metadata,
+          ...initialPost.metadata,
           title: 'Unit Test'
         }
       },

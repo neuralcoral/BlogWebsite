@@ -1,8 +1,12 @@
 import { ChangeEvent } from 'react';
 import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContext';
+import './DraftPost.css';
 
-interface DraftPreviewTextProps {}
-const DraftPreviewText: React.FC<DraftPreviewTextProps> = () => {
+interface DraftPreviewTextProps {
+  isEditing: boolean;
+}
+
+const DraftPreviewText: React.FC<DraftPreviewTextProps> = ({ isEditing }) => {
   const post = usePost();
   const dispatch = usePostDispatch();
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -26,7 +30,11 @@ const DraftPreviewText: React.FC<DraftPreviewTextProps> = () => {
   };
   return (
     <div className="preview-text">
-      <textarea value={post?.metadata.previewText} onChange={handleChange} />
+      {isEditing ? (
+        <textarea value={post?.metadata.previewText} onChange={handleChange} />
+      ) : (
+        <h3>{post?.metadata.previewText}</h3>
+      )}
     </div>
   );
 };

@@ -2,10 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import { buildReviewPostUrl } from '../../utils/postUtils';
 import './DraftPost.css';
 import { usePost, usePostDispatch, DraftPostActionType, DraftPostAction } from './DraftPostContext';
-import { Post } from '../../models/post';
 
 interface BottomButtonsProps {}
-const BottomButtons: React.FC<BottomButtonsProps> = () => {
+const BottomButtons: React.FC<BottomButtonsProps> = ({}) => {
   const navigate = useNavigate();
   const post = usePost();
   const dispatch = usePostDispatch();
@@ -17,6 +16,7 @@ const BottomButtons: React.FC<BottomButtonsProps> = () => {
     if (!post) {
       throw new Error('post must be initialized');
     }
+    console.log('Handling save');
     dispatch({
       type: DraftPostActionType.SAVE,
       newPost: post,
@@ -38,8 +38,8 @@ const BottomButtons: React.FC<BottomButtonsProps> = () => {
   };
   return (
     <div className="bottom-buttons">
-      <button onClick={handleSave}>Save</button>
-      <button onClick={handleReview}>Review</button>
+      <button onClick={() => handleSave()}>Save</button>
+      <button onClick={() => handleReview()}>Review</button>
     </div>
   );
 };

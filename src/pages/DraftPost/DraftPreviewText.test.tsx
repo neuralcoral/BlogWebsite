@@ -19,12 +19,12 @@ describe('DraftPreviewText component', () => {
   });
 
   test('component is visible', () => {
-    render(<DraftPreviewText />);
+    render(<DraftPreviewText isEditing={true} />);
     expect(screen.getByText(fakePost.metadata.previewText)).toBeInTheDocument();
   });
 
   test('text is updated in component', () => {
-    render(<DraftPreviewText />);
+    render(<DraftPreviewText isEditing={true} />);
     const textbox = screen.getByText(fakePost.metadata.previewText);
     const newText = 'Goodbye Mars';
 

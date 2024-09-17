@@ -2,7 +2,7 @@
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows: 5% 5% 80% 10%;
   grid-template-columns: 2fr repeat(3, 1fr) 0.5fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
@@ -19,8 +19,18 @@
   text-decoration: bold italic;
 }
 
+.preview-text {
+  grid-area: 2/ 1 / 3 / -2;
+}
+
+.preview-text textarea {
+  resize: none;
+  width: 100%;
+  height: 100%;
+}
+
 .draft-text {
-  grid-area: 2 / 1 / 3 / -2;
+  grid-area: 3 / 1 / 4 / -2;
 }
 
 .draft-text > * {
@@ -36,7 +46,7 @@
   align-items: start;
   justify-content: end;
   display: flex;
-  grid-area: 3 / -3 / 3 / -3;
+  grid-area: 4 / -3 / 4 / -3;
   margin-bottom: 50px;
 }
 

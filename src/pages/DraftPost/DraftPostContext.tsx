@@ -28,6 +28,7 @@ export interface DraftPostAction {
 export function draftPostReducer(post: Post, action: DraftPostAction) {
   switch (action.type) {
     case DraftPostActionType.SAVE:
+      console.log('Save called on PostReducer');
       createDraft(post.metadata);
       break;
     case DraftPostActionType.REVIEW:
