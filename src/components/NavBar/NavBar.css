@@ -41,29 +41,6 @@ li.option:active {
   outline: none;
 }
 
-.toggle-show {
-  text-align: left;
-  padding-left: 50px;
-  position: absolute;
-  bottom: 10px;
-  font-size: 75px;
-  text-shadow:
-    0 0 1px #264653,
-    0 0 1px #264653,
-    0 0 1px #264653,
-    0 0 1px #264653;
-}
-
-.toggle-show:hover {
-  font-size: 80px;
-  outline: none; /* Remove default focus outline */
-  text-shadow:
-    0 0 2px #264653,
-    0 0 2px #264653,
-    0 0 2px #264653,
-    0 0 2px #264653;
-}
-
 .toggle-show:active {
   font-size: 75px;
 }

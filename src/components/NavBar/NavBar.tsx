@@ -4,14 +4,10 @@ import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import { PAGES } from './pages';
 
-const NavBar: React.FC = () => {
+interface NavBarProps {}
+
+const NavBar: React.FC<NavBarProps> = ({}) => {
   const navigate = useNavigate();
-  const [show, setShow] = useState(true);
-
-  function toggleShow() {
-    setShow(!show);
-  }
-
   function options() {
     return (
       <>
@@ -31,13 +27,8 @@ const NavBar: React.FC = () => {
   }
 
   return (
-    <div className={`side-nav ${show ? 'visible' : ''}`}>
-      <ul>
-        {show && options()}
-        <li className="toggle-show" onClick={toggleShow}>
-          🧠
-        </li>
-      </ul>
+    <div className="side-nav visible">
+      <ul>{options()}</ul>
     </div>
   );
 };

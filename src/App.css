@@ -5,16 +5,54 @@
 }
 
 .app {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 0px;
+  display: flex;
+  height: 100vh;
 }
 .navbar {
-  grid-area: 1 / 1 / -1 / 2;
+  display: flex;
+  flex-shrink: 0;
+  width: 12.5%;
+  min-width: 200px;
+  transition: width 0.3s ease;
+}
+
+.navbar.hidden {
+  width: 0;
+  min-width: 0;
+  content-visibility: hidden;
 }
 
 .content {
-  grid-area: 1 / 2 / -1 / -1;
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.toggle-show {
+  user-select: none;
+  cursor: pointer;
+  text-align: left;
+  padding-left: 50px;
+  position: absolute;
+  bottom: 10px;
+  font-size: 75px;
+  text-shadow:
+    0 0 1px #264653,
+    0 0 1px #264653,
+    0 0 1px #264653,
+    0 0 1px #264653;
+}
+
+.toggle-show:hover {
+  font-size: 80px;
+  outline: none; /* Remove default focus outline */
+  text-shadow:
+    0 0 2px #264653,
+    0 0 2px #264653,
+    0 0 2px #264653,
+    0 0 2px #264653;
+}
+
+.toggle-show:active {
+  font-size: 75px;
 }

@@ -36,31 +36,6 @@ describe('NavBar component', () => {
     });
   });
 
-  test('toggle functionality works', () => {
-    render(
-      <Router>
-        <NavBar />
-      </Router>
-    );
-
-    PAGES.forEach((page) => {
-      expect(screen.getByText(page.pageName)).toBeVisible();
-    });
-
-    const toggleButton = screen.getByText('🧠');
-    fireEvent.click(toggleButton);
-
-    PAGES.forEach((page) => {
-      expect(screen.queryByText(page.pageName)).toBeNull();
-    });
-
-    fireEvent.click(toggleButton);
-
-    PAGES.forEach((page) => {
-      expect(screen.getByText(page.pageName)).toBeVisible();
-    });
-  });
-
   test('clicking on a page navigates correctly', () => {
     render(
       <Router>
