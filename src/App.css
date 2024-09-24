@@ -29,6 +29,8 @@
 }
 
 .toggle-show {
+  width: fit-content;
+  height: fit-content;
   user-select: none;
   cursor: pointer;
   text-align: left;
