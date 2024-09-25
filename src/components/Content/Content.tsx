@@ -12,21 +12,30 @@ const Content: React.FC = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/posts/:id/draft" element={
-        <AdminRoute>
-          <DraftPost />
-        </AdminRoute>
-      } />
-      <Route path="/posts/:id/review" element={
-        <AdminRoute>
-          <ReviewPost />
-        </AdminRoute>
-      } />
-      <Route path="/posts/edit" element={
-        <AdminRoute>
-          <EditPostPreviews />
-        </AdminRoute>
-      } />
+      <Route
+        path="/posts/:id/draft"
+        element={
+          <AdminRoute>
+            <DraftPost />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/posts/:id/review"
+        element={
+          <AdminRoute>
+            <ReviewPost />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/posts/edit"
+        element={
+          <AdminRoute>
+            <EditPostPreviews />
+          </AdminRoute>
+        }
+      />
     </Routes>
   );
 };
