@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react';
 import { PostMetadata } from '../../models/post';
 import { getPostedPosts } from '../../api/posts';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Feed.css';
 
 const BlogEntry: React.FC = () => {
   const [postMetadataEntries, setPostMetadataEntries] = useState<PostMetadata[]>([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -24,12 +28,16 @@ const BlogEntry: React.FC = () => {
     };
   }, []);
 
+  const handleClick = (postMetadata: PostMetadata) => {
+    navigate(`/posts/${postMetadata.id}`);
+  };
+
   return (
     <>
       {postMetadataEntries.map((postMetadata) => {
         return (
-          <div key={postMetadata.id} className="post-preview">
-            <h2>{postMetadata.title}</h2>
+          <div key={postMetadata.id} onClick={() => handleClick(postMetadata)} className="post-preview">
+            <h2 className="title">{postMetadata.title}</h2>
             <p>{postMetadata.previewText}</p>
           </div>
         );

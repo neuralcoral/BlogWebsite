@@ -1,0 +1,23 @@
+.post-preview {
+  cursor: pointer;
+  padding: 0.8em;
+  width: 100%;
+}
+
+.post-preview:hover {
+  color: #f5f5f5;
+  background-color: #264653;
+  transition: background-color 1s ease;
+  transition: color 1s ease;
+}
+
+.title {
+  font-size: 1.5rem;
+  height: 2.5rem;
+  overflow: hidden;
+  transition: font-size 0.3s ease;
+}
+
+.title:hover {
+  font-size: 2rem;
+}

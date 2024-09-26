@@ -1,12 +1,12 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .app {
   display: flex;
   height: 100vh;
+  width: 100vw;
 }
 
 .navbar {
@@ -25,7 +25,6 @@
 
 .content {
   flex-grow: 1;
-  padding: 20px;
   transition: margin-left 0.3s ease;
 }
 
