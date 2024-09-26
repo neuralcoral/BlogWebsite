@@ -1,5 +1,6 @@
 import './DraftPost.css';
 import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContext';
+import React from 'react';
 
 interface TitleInputProps {
   isEditing: boolean;

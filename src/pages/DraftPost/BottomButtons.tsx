@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { buildReviewPostUrl } from '../../utils/postUtils';
 import './DraftPost.css';
 import { usePost, usePostDispatch, DraftPostActionType, DraftPostAction } from './DraftPostContext';
+import React from 'react';
 
 interface BottomButtonsProps {}
 const BottomButtons: React.FC<BottomButtonsProps> = ({}) => {

@@ -14,7 +14,6 @@ const pageInfo = (pageName: string, route: () => string, isAdmin: boolean) => {
 export const PAGES = [
   pageInfo('Home', () => '/', false),
   pageInfo('About', () => '/about', false),
-  pageInfo('Login', () => '/login', false),
   pageInfo('Create Post', () => buildDraftPostUrl(uuidv4()), true),
   pageInfo('Edit Posts', () => '/posts/edit', true)
 ];

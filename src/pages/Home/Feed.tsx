@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { PostMetadata } from '../../models/post';
 import { getPostedPosts } from '../../api/posts';
+import React from 'react';
 
 const BlogEntry: React.FC = () => {
   const [postMetadataEntries, setPostMetadataEntries] = useState<PostMetadata[]>([]);

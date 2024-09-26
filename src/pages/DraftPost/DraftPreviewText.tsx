@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
 import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContext';
 import './DraftPost.css';
+import React from 'react';
 
 interface DraftPreviewTextProps {
   isEditing: boolean;

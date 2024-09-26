@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import React from 'react';
 import { Post } from '../../models/post';
 import { createDraft } from '../../api/posts';
 

@@ -1,6 +1,7 @@
 import { VscOpenPreview } from 'react-icons/vsc';
 import { FaEdit } from 'react-icons/fa';
 import './DraftPost.css';
+import React from 'react';
 
 interface SideButtonsProps {
   isEditing: boolean;

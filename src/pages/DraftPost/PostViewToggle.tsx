@@ -1,6 +1,7 @@
 import PostEditor from './PostEditor';
 import PostPreview from './PostPreview';
 import './DraftPost.css';
+import React from 'react';
 
 interface PostViewToggleProps {
   isEditing: boolean;

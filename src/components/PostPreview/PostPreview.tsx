@@ -1,4 +1,5 @@
 import { PostMetadata } from '../../models/post';
+import React from 'react';
 
 interface PostPreviewProps {
   post: PostMetadata;

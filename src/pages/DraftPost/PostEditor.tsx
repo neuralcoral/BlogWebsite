@@ -1,4 +1,5 @@
 import { DraftPostActionType, usePost, usePostDispatch } from './DraftPostContext';
+import React from 'react';
 
 export interface PostEditorProps {}
 const PostEditor: React.FC<PostEditorProps> = () => {
